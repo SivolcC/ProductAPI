@@ -8,7 +8,7 @@ class BaseConfig(object):
     ENABLED_MODULES = (
         #'products',
         #'options',
-        #'api',
+        'api',
     )
 
     STATIC_ROOT = os.path.join(PROJECT_ROOT, 'static')
