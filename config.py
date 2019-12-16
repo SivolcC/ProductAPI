@@ -22,6 +22,14 @@ class BaseConfig(object):
 class RemoteConfig(BaseConfig):
     FLASK_CONFIG =                   os.getenv('FLASK_CONFIG')
 
+    # ORM
+    SQLALCHEMY_DATABASE_URI =        os.getenv('SQLALCHEMY_DATABASE_URI')
+    SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
+
 
 class DevelopmentConfig(BaseConfig):
-    FLAKS_CONFIG = 'development'
+    FLAKS_CONFIG =                   'development'
+
+    # ORM
+    SQLALCHEMY_DATABASE_URI =        'sqlite:///../database/products.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
