@@ -13,13 +13,13 @@ class CreateOptionParameters(Parameters):
     """
     Parameters to create Option
     """
-    name = ma.String(required=True, location='json')
-    description = ma.String(required=True, location='json')
+    name = ma.String(required=True, location='json', dump_to='Name')
+    description = ma.String(required=True, location='json', dump_to='Description')
 
 
 class UpdateOptionParameters(Parameters):
     """
     Parameters to update Option
     """
-    name = ma.String(required=False, location='json')
-    description = ma.String(required=False, location='json')
+    name = ma.String(required=False, location='json', dump_to='Name')
+    description = ma.String(required=False, location='json', dump_to='Description')

@@ -14,20 +14,20 @@ class CreateProductParameters(Parameters):
     """
     Parameters to create Product
     """
-    name = ma.String(required=True, location='json')
-    description = ma.String(required=True, location='json')
-    price = ma.Float(required=True, location='json')
-    delivery_price = ma.Float(required=True, location='json')
+    name = ma.String(equired=True, location='json', dump_to='Name')
+    description = ma.String(required=True, location='json', dump_to='Description')
+    price = ma.Float("Price", required=True, location='json', dump_to='Price')
+    delivery_price = ma.Float("DeliveryPrice", required=True, location='json', dump_to='DeliveryPrice')
 
 
 class UpdateProductParameters(Parameters):
     """
     Parameters to update Product
     """
-    name = ma.String(required=False, location='json')
-    description = ma.String(required=False, location='json')
-    price = ma.Float(required=False, location='json')
-    delivery_price = ma.Float(required=False, location='json')
+    name = ma.String(required=False, location='json', dump_to='Name')
+    description = ma.String(required=False, location='json', dump_to='Description')
+    price = ma.Float(required=False, location='json', dump_to='Price')
+    delivery_price = ma.Float(required=False, location='json', dump_to='DeliveryPrice')
 
 
 class SearchProductParameters(SearchParameters):
