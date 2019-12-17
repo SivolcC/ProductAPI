@@ -9,6 +9,7 @@ from . import modules
 
 CONFIG_NAME_MAPPER = {
     'development': 'config.DevelopmentConfig',
+    'testing': 'config.TestingConfig',
     'production': 'config.RemoteConfig'
 }
 
@@ -32,5 +33,9 @@ def create_app(flask_config='development', **kwargs):
 
     extensions.init_app(app)
     modules.init_app(app)
+
+    with app.app_context():
+        from app.extensions import db
+        db.create_all()
 
     return app

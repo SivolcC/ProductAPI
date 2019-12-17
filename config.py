@@ -28,8 +28,22 @@ class RemoteConfig(BaseConfig):
 
 
 class DevelopmentConfig(BaseConfig):
+    DEBUG = True
+    TESTING = True
+
     FLAKS_CONFIG =                   'development'
 
     # ORM
     SQLALCHEMY_DATABASE_URI =        'sqlite:///../database/products.db'
+    SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+
+class TestingConfig(BaseConfig):
+    DEBUG = True
+    TESTING = True
+
+    FLAKS_CONFIG =                   'development'
+
+    # ORM
+    SQLALCHEMY_DATABASE_URI =        'sqlite:///../database/testing_products.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
