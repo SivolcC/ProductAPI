@@ -7,7 +7,7 @@ class BaseConfig(object):
 
     ENABLED_MODULES = (
         'products',
-        #'product_options',
+        'options',
         'api',
     )
 

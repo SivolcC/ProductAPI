@@ -13,6 +13,8 @@ class ProductModel(db.Model):
     description = db.Column('Description', db.String(length=35))
     price = db.Column('Price', db.Float())
     delivery_price = db.Column('DeliveryPrice', db.Float())
+    # Relationship
+    options = db.relationship("OptionModel", back_populates='product', cascade='all')
 
     def __init__(self, **kwargs):
         super(ProductModel, self).__init__(**kwargs)

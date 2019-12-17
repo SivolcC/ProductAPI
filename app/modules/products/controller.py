@@ -4,13 +4,20 @@ Grouping Resource classes.
 """
 from app.extensions import db
 from app.extensions.api import (Namespace,
-                                Resource)
+                                Resource,
+                                PaginationParameters)
 from .schemas import (ProductSchema,
                       PaginatedProductSchema)
 from .models import ProductModel
 from .parameters import (SearchProductParameters,
                          CreateProductParameters,
                          UpdateProductParameters)
+
+from app.modules.options.models import OptionModel
+from app.modules.options.parameters import CreateOptionParameters
+from app.modules.options.schemas import (OptionSchema,
+                                         PaginatedOptionSchema)
+
 
 ns = Namespace('products',
                ordered=True,
@@ -72,3 +79,27 @@ class ProductByIDResource(Resource):
         """
         db.session.delete(product)
         return None, 204
+
+
+@ns.route('/<string:product_id>/options')
+@ns.resolve_object_by_model(ProductModel, 'product')
+class ProductByIDOptionsResource(Resource):
+    @ns.parameters(CreateOptionParameters())
+    @ns.response(OptionSchema())
+    def post(self, args, product):
+        """
+        Creates an option and adds it to product.
+        """
+        option = OptionModel(**args)
+        product.options.append(option)
+        return option
+
+    @ns.parameters(PaginationParameters())
+    @ns.response(PaginatedOptionSchema())
+    def get(self, args, product):
+        """
+        Get paginated list of a product's options.
+        """
+        return OptionModel.query\
+            .filter(OptionModel.product_id == product.id)\
+            .paginate(args['page'], args['per_page'], False)
