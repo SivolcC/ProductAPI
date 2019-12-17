@@ -8,7 +8,6 @@ from flask_restplus import Api as OriginalApi
 from werkzeug import cached_property
 
 from .http_exceptions import HTTPStatus
-from .namespace import Namespace
 from .swagger import Swagger
 from .namespace import Namespace
 

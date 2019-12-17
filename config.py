@@ -6,8 +6,8 @@ class BaseConfig(object):
     ERROR_404_HELP = False
 
     ENABLED_MODULES = (
-        #'products',
-        #'options',
+        'products',
+        #'product_options',
         'api',
     )
 

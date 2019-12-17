@@ -5,7 +5,9 @@ Forked from https://github.com/frol/flask-restplus-server-example flask-restplus
 """
 from .api import Api
 from .namespace import Namespace
-from .parameters import Parameters
+from .parameters import (Parameters,
+                         SearchParameters,
+                         PaginationParameters)
 from .resource import Resource
 from .model import ModelSchema
 from .http_exceptions import abort, HTTPStatus
@@ -21,7 +23,7 @@ api = Api(
 )
 
 # Temporary fix concerning https://github.com/noirbizarre/flask-restplus/issues/460
-api.namespaces.pop(0)
+api.namespaces = []
 
 
 def init_app(app, **kwargs):

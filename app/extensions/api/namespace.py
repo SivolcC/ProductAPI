@@ -95,16 +95,6 @@ class Namespace(OriginalNamespace):
         if doc is False:
             cls.__apidoc__ = False
             return
-        ##unshortcut_params_description(doc)
-        ##handle_deprecations(doc)
-        ##for key in 'get', 'post', 'put', 'delete', 'options', 'head', 'patch':
-        ##    if key in doc:
-        ##        if doc[key] is False:
-        ##            continue
-        ##        unshortcut_params_description(doc[key])
-        ##        handle_deprecations(doc[key])
-        ##        if 'expect' in doc[key] and not isinstance(doc[key]['expect'], (list, tuple)):
-        ##            doc[key]['expect'] = [doc[key]['expect']]
         cls.__apidoc__ = merge(getattr(cls, '__apidoc__', {}), doc)
 
     def resolve_object(self, object_arg_name, resolver):
