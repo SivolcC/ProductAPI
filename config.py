@@ -19,9 +19,7 @@ class BaseConfig(object):
     TESTING = False
 
 
-class RemoteConfig(BaseConfig):
-    FLASK_CONFIG =                   os.getenv('FLASK_CONFIG')
-
+class ProductionConfig(BaseConfig):
     # ORM
     SQLALCHEMY_DATABASE_URI =        os.getenv('SQLALCHEMY_DATABASE_URI')
     SQLALCHEMY_TRACK_MODIFICATIONS = os.getenv('SQLALCHEMY_TRACK_MODIFICATIONS')
@@ -31,8 +29,6 @@ class DevelopmentConfig(BaseConfig):
     DEBUG = True
     TESTING = True
 
-    FLAKS_CONFIG =                   'development'
-
     # ORM
     SQLALCHEMY_DATABASE_URI =        'sqlite:///../database/products.db'
     SQLALCHEMY_TRACK_MODIFICATIONS = False
@@ -41,8 +37,6 @@ class DevelopmentConfig(BaseConfig):
 class TestingConfig(BaseConfig):
     DEBUG = True
     TESTING = True
-
-    FLAKS_CONFIG =                   'development'
 
     # ORM
     SQLALCHEMY_DATABASE_URI =        'sqlite:///../database/testing_products.db'

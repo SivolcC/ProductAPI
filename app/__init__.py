@@ -10,7 +10,7 @@ from . import modules
 CONFIG_NAME_MAPPER = {
     'development': 'config.DevelopmentConfig',
     'testing': 'config.TestingConfig',
-    'production': 'config.RemoteConfig'
+    'production': 'config.ProductionConfig'
 }
 
 
