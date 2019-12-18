@@ -94,7 +94,7 @@ If you are in a UNIX environment, to get started quickly with the project, set u
 Start up server
 ---------------
 
-`gunicorn -b 0.0.0.0:5000 wsgi:app`
+`gunicorn -b 0.0.0.0:5000 run:app`
 
 Open online interactive API documentation:
 [http://127.0.0.1:5000/api/doc](http://127.0.0.1:5000/api/doc)
