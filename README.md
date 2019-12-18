@@ -7,7 +7,7 @@ Refactored RESTful ProductAPI
 This project is part of a technical assessment, the goal is to refactor an API written in .NET.
 You can find the initial README [here](README.deprecated.md)
 
-The initial API, named RefactorThis was "poorly written" and lacked of what is a real production-ready project:
+The initial API, named RefactorThis was "poorly written" and lacked of what is a real production-ready project
 
 #### No unit tests:
 It is fundamental to have a minimum of automated testing for production code.
@@ -35,6 +35,18 @@ Thanks to `flask-restplus` framework, ProductAPI now has an interactive API docu
 While this should not be made public in production (unless you want your API to be public), it is a standardized way to share API specs to other developers.
 
 RefactorThis API was lacking comments in the code. For developers who did not have previous exposure, it can be very hard to catch-up.
+
+## Summary
+To answer all those problems, we chose the language [Python3](https://www.python.org/) with the [Flask](https://en.wikipedia.org/wiki/Flask_(web_framework)) framework.
+Flask is a reliable, lightweight framework to build web applications. Its module [Flask-Restful](https://flask-restful.readthedocs.io/en/latest/) has the advantage of generating an interactive OpenAPI documentation, and allow to develop efficiently beautiful REST APIs.
+It also packs [SQLAlchemy](https://www.sqlalchemy.org/) which is a mature and reliable ORM.
+We also chose [PyTest](https://docs.pytest.org/en/latest/) for unit test, [Docker](https://docs.docker.com/) for containerization, and additionally [Gunicorn](https://gunicorn.org/) as http server and [Nginx](https://www.nginx.com/) in its free version as reverse proxy.
+Because every project need a version control, [GitHub](https://github.com) was a logical choice in the context of this assessment.
+
+Other options considered were using [AWS Api Gateway](https://aws.amazon.com/api-gateway/), which allows to "easily create, publish, maintain and monitor" APIs.
+[Laravel](https://laravel.com/), which is almost the equivalent of Flask in the PHP world, would have been a good solution too.
+
+It could have been possible to refactor the initial .NET project, along with [NSwag](https://github.com/RicoSuter/NSwag) for the OpenAPI specifications. But limited access to a Windows environment would have made development harder and lenghtier.
 
 ## Future possible improvements
 
@@ -219,6 +231,8 @@ Run with Docker
 ---------------
 
 This project uses docker-compose to orchestrate the api container along a reverse proxy container.
+You will simply need to have docker installed on your machine. (for more infos, check docker documentation [here](https://docs.docker.com/))
+If you are using a fresh install of docker, you may need to run those commands as administrator (sudo).
 
 You can execute the build command from the root of the repository:
 `$ docker-compose build`
